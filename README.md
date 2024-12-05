@@ -234,3 +234,343 @@ O simulador de sistema de arquivos com journaling implementado em Java fornece u
 A estrutura modular do código, com classes separadas para arquivos, diretórios e gerenciamento do sistema de arquivos, facilita a manutenção e a expansão do simulador. A implementação do journaling demonstra como operações podem ser registradas e reproduzidas para recuperar o estado após falhas.
 
 Este projeto serve como uma ferramenta educacional para aprofundar o entendimento sobre sistemas de arquivos e mecanismos de proteção de dados em sistemas operacionais.
+
+
+# Tutorial de Utilização do Sistema de Arquivos
+
+Este tutorial fornece instruções detalhadas sobre como utilizar o simulador de sistema de arquivos. São apresentadas todas as operações disponíveis, acompanhadas de explicações e exemplos práticos para facilitar o entendimento do funcionamento do sistema.
+
+## Comandos Disponíveis
+
+1. **criarArquivo \<caminho\>**
+   - **Descrição:** Cria um novo arquivo no caminho especificado.
+   - **Exemplo:**
+     ```
+     criarArquivo /documentos/relatorio.txt
+     ```
+     Este comando cria um arquivo chamado `relatorio.txt` dentro do diretório `/documentos`.
+
+2. **apagarArquivo \<caminho\>**
+   - **Descrição:** Remove o arquivo especificado do sistema de arquivos.
+   - **Exemplo:**
+     ```
+     apagarArquivo /documentos/relatorio.txt
+     ```
+     Este comando apaga o arquivo `relatorio.txt` do diretório `/documentos`.
+
+3. **renomearArquivo \<caminho\> \<novoNome\>**
+   - **Descrição:** Renomeia o arquivo especificado para um novo nome.
+   - **Exemplo:**
+     ```
+     renomearArquivo /documentos/relatorio.txt relatorio_final.txt
+     ```
+     Este comando renomeia o arquivo `relatorio.txt` para `relatorio_final.txt` dentro do diretório `/documentos`.
+
+4. **criarDiretorio \<caminho\>**
+   - **Descrição:** Cria um novo diretório no caminho especificado.
+   - **Exemplo:**
+     ```
+     criarDiretorio /fotos/viagem
+     ```
+     Este comando cria o diretório `viagem` dentro de `/fotos`.
+
+5. **apagarDiretorio \<caminho\>**
+   - **Descrição:** Remove o diretório especificado do sistema de arquivos.
+   - **Exemplo:**
+     ```
+     apagarDiretorio /fotos/viagem
+     ```
+     Este comando apaga o diretório `viagem` dentro de `/fotos`.
+
+6. **renomearDiretorio \<caminho\> \<novoNome\>**
+   - **Descrição:** Renomeia o diretório especificado para um novo nome.
+   - **Exemplo:**
+     ```
+     renomearDiretorio /fotos/viagem viagem2022
+     ```
+     Este comando renomeia o diretório `viagem` para `viagem2022` dentro de `/fotos`.
+
+7. **listarDiretorio \<caminho\>**
+   - **Descrição:** Lista todos os arquivos e subdiretórios presentes no diretório especificado.
+   - **Exemplo:**
+     ```
+     listarDiretorio /documentos
+     ```
+     Este comando exibe todos os conteúdos dentro do diretório `/documentos`.
+
+8. **sair**
+   - **Descrição:** Encerra o simulador e salva o estado atual do sistema de arquivos.
+   - **Exemplo:**
+     ```
+     sair
+     ```
+
+## Exemplos Práticos
+
+### 1. Criando Estruturas de Diretórios e Arquivos
+
+**Passo a passo:**
+
+1. **Criar um diretório chamado `projetos` na raiz:**
+
+   ```
+   criarDiretorio /projetos
+   ```
+
+2. **Dentro de `projetos`, criar um arquivo chamado `projeto1.txt`:**
+
+   ```
+   criarArquivo /projetos/projeto1.txt
+   ```
+
+3. **Criar um subdiretório chamado `codigo` dentro de `projetos`:**
+
+   ```
+   criarDiretorio /projetos/codigo
+   ```
+
+4. **Adicionar um arquivo `main.java` dentro de `/projetos/codigo`:**
+
+   ```
+   criarArquivo /projetos/codigo/main.java
+   ```
+
+5. **Listar o conteúdo do diretório `/projetos`:**
+
+   ```
+   listarDiretorio /projetos
+   ```
+
+   **Saída esperada:**
+
+   ```
+   Listando diretório: /projetos
+   Arquivo: projeto1.txt
+   Diretório: codigo
+   ```
+
+6. **Listar o conteúdo do diretório `/projetos/codigo`:**
+
+   ```
+   listarDiretorio /projetos/codigo
+   ```
+
+   **Saída esperada:**
+
+   ```
+   Listando diretório: /projetos/codigo
+   Arquivo: main.java
+   ```
+
+### 2. Renomeando Arquivos e Diretórios
+
+1. **Renomear o arquivo `projeto1.txt` para `projeto_final.txt`:**
+
+   ```
+   renomearArquivo /projetos/projeto1.txt projeto_final.txt
+   ```
+
+2. **Renomear o diretório `codigo` para `fonte`:**
+
+   ```
+   renomearDiretorio /projetos/codigo fonte
+   ```
+
+3. **Listar o conteúdo atualizado do diretório `/projetos`:**
+
+   ```
+   listarDiretorio /projetos
+   ```
+
+   **Saída esperada:**
+
+   ```
+   Listando diretório: /projetos
+   Arquivo: projeto_final.txt
+   Diretório: fonte
+   ```
+
+### 3. Apagando Arquivos e Diretórios
+
+1. **Apagar o arquivo `main.java` dentro de `/projetos/fonte`:**
+
+   ```
+   apagarArquivo /projetos/fonte/main.java
+   ```
+
+2. **Apagar o diretório `fonte`:**
+
+   ```
+   apagarDiretorio /projetos/fonte
+   ```
+
+3. **Listar o conteúdo atualizado do diretório `/projetos`:**
+
+   ```
+   listarDiretorio /projetos
+   ```
+
+   **Saída esperada:**
+
+   ```
+   Listando diretório: /projetos
+   Arquivo: projeto_final.txt
+   ```
+
+### 4. Exemplo Completo de Uso
+
+**Cenário:** Organizando documentos pessoais.
+
+1. **Criar diretório para documentos pessoais:**
+
+   ```
+   criarDiretorio /usuarios/joao/documentos
+   ```
+
+2. **Adicionar arquivos de texto:**
+
+   ```
+   criarArquivo /usuarios/joao/documentos/curriculo.docx
+   criarArquivo /usuarios/joao/documentos/carta_de_apresentacao.docx
+   ```
+
+3. **Criar subdiretório para fotos:**
+
+   ```
+   criarDiretorio /usuarios/joao/documentos/fotos
+   ```
+
+4. **Adicionar arquivos de imagem:**
+
+   ```
+   criarArquivo /usuarios/joao/documentos/fotos/foto1.jpg
+   criarArquivo /usuarios/joao/documentos/fotos/foto2.jpg
+   ```
+
+5. **Listar o conteúdo do diretório de documentos:**
+
+   ```
+   listarDiretorio /usuarios/joao/documentos
+   ```
+
+   **Saída esperada:**
+
+   ```
+   Listando diretório: /usuarios/joao/documentos
+   Arquivo: curriculo.docx
+   Arquivo: carta_de_apresentacao.docx
+   Diretório: fotos
+   ```
+
+6. **Renomear o diretório `fotos` para `imagens`:**
+
+   ```
+   renomearDiretorio /usuarios/joao/documentos/fotos imagens
+   ```
+
+7. **Listar o conteúdo atualizado:**
+
+   ```
+   listarDiretorio /usuarios/joao/documentos
+   ```
+
+   **Saída esperada:**
+
+   ```
+   Listando diretório: /usuarios/joao/documentos
+   Arquivo: curriculo.docx
+   Arquivo: carta_de_apresentacao.docx
+   Diretório: imagens
+   ```
+
+8. **Apagar o arquivo `carta_de_apresentacao.docx`:**
+
+   ```
+   apagarArquivo /usuarios/joao/documentos/carta_de_apresentacao.docx
+   ```
+
+9. **Listar o conteúdo final:**
+
+   ```
+   listarDiretorio /usuarios/joao/documentos
+   ```
+
+   **Saída esperada:**
+
+   ```
+   Listando diretório: /usuarios/joao/documentos
+   Arquivo: curriculo.docx
+   Diretório: imagens
+   ```
+
+### 5. Salvando e Carregando o Estado do Sistema de Arquivos
+
+O simulador utiliza um mecanismo de journaling para salvar o estado do sistema de arquivos. Ao encerrar o simulador com o comando `sair`, o estado atual é salvo, e ao iniciar o simulador novamente, o estado é restaurado.
+
+**Passos:**
+
+1. **Encerrar o simulador:**
+
+   ```
+   sair
+   ```
+
+2. **Iniciar o simulador novamente. O estado anterior será restaurado automaticamente.**
+
+   **Observação:** Não serão exibidas mensagens das operações passadas, apenas o prompt de comando estará disponível.
+
+3. **Verificar que o estado foi restaurado listando um diretório:**
+
+   ```
+   listarDiretorio /usuarios/joao/documentos
+   ```
+
+   **Saída esperada (mesma do passo anterior):**
+
+   ```
+   Listando diretório: /usuarios/joao/documentos
+   Arquivo: curriculo.docx
+   Diretório: imagens
+   ```
+
+## Observações Importantes
+
+- **Caminhos Absolutos:** Todos os comandos utilizam caminhos absolutos a partir da raiz (`/`).
+
+- **Nomes de Arquivos e Diretórios:** Evite utilizar caracteres especiais ou espaços nos nomes para prevenir possíveis erros.
+
+- **Sensível a Maiúsculas e Minúsculas:** O simulador diferencia letras maiúsculas de minúsculas nos nomes de arquivos e diretórios.
+
+- **Integridade dos Dados:** Graças ao mecanismo de journaling, o sistema é capaz de recuperar o estado consistente em caso de falhas.
+
+## Dicas de Uso
+
+- **Planejamento da Estrutura:** Antes de começar, planeje a estrutura de diretórios e arquivos que deseja criar para facilitar a organização.
+
+- **Verificação Frequente:** Utilize o comando `listarDiretorio` para verificar o conteúdo dos diretórios e acompanhar as alterações.
+
+- **Renomeações Cuidadosas:** Ao renomear arquivos ou diretórios, certifique-se de usar o caminho correto e o novo nome desejado para evitar confusões.
+
+- **Encerramento Seguro:** Sempre encerre o simulador utilizando o comando `sair` para garantir que o estado do sistema de arquivos seja salvo corretamente.
+
+## Tratamento de Erros Comuns
+
+- **Diretório ou Arquivo Não Encontrado:**
+
+  Se ao executar um comando você receber uma mensagem informando que o diretório ou arquivo não foi encontrado, verifique se o caminho está correto e se o nome está digitado exatamente como foi criado (respeitando maiúsculas e minúsculas).
+
+- **Operação Inválida:**
+
+  Se você inserir um comando que não está listado nas operações disponíveis, o simulador informará que a operação é inválida. Consulte a seção de comandos disponíveis para verificar a sintaxe correta.
+
+- **Tentativa de Criar Arquivo em Diretório Inexistente:**
+
+  Ao criar um arquivo, o diretório pai deve existir. Certifique-se de criar todos os diretórios necessários antes de criar arquivos dentro deles.
+
+## Conclusão
+
+Este tutorial apresentou uma visão detalhada de como utilizar o simulador de sistema de arquivos, cobrindo todas as operações disponíveis e fornecendo exemplos práticos. Com essas instruções, você está preparado para explorar e testar o simulador, compreendendo melhor como os sistemas de arquivos funcionam e como o journaling contribui para a integridade dos dados.
+
+Explore diferentes cenários, crie estruturas complexas de diretórios e arquivos, e observe como o sistema mantém o estado consistente mesmo após encerramentos e reinicializações.
+
+Bom aprendizado e bom uso do simulador!
