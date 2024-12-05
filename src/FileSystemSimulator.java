@@ -1,8 +1,21 @@
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.CipherOutputStream;
+import javax.crypto.CipherInputStream;
+import javax.crypto.spec.SecretKeySpec;
+import java.nio.file.*;
+import java.nio.file.attribute.*;
+
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.DosFileAttributeView;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -184,32 +197,65 @@ public class FileSystemSimulator {
             }
         }
     }
+
+    public void ocultarArquivo(String caminhoArquivo) {
+        try {
+            Path path = Paths.get(caminhoArquivo);
+            DosFileAttributeView attr = Files.getFileAttributeView(path, DosFileAttributeView.class);
+            if (attr != null) {
+                attr.setHidden(true);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
 
     // Método para salvar o journal em um arquivo
     public void salvarJournal() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("journal.dat"))) {
-            oos.writeObject(journal);
-        } catch (IOException e) {
+        try {
+            SecretKey chaveSecreta = CryptoUtils.getSecretKey();
+            Cipher cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.ENCRYPT_MODE, chaveSecreta);
+
+            try (FileOutputStream fos = new FileOutputStream("journal.dat");
+                 CipherOutputStream cos = new CipherOutputStream(fos, cipher);
+                 ObjectOutputStream oos = new ObjectOutputStream(cos)) {
+
+                oos.writeObject(journal);
+            }
+            // Tornar o arquivo oculto após salvar
+            ocultarArquivo("journal.dat");
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     // Método para carregar o journal de um arquivo
-    @SuppressWarnings("unchecked")
+   @SuppressWarnings("unchecked")
     public void carregarJournal() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("journal.dat"))) {
-            journal = (List<JournalEntry>) ois.readObject();
-            // Iniciar modo de reprodução
-            isReplaying = true;
+        try {
+            SecretKey chaveSecreta = CryptoUtils.getSecretKey();
+            Cipher cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.DECRYPT_MODE, chaveSecreta);
+
+            try (FileInputStream fis = new FileInputStream("journal.dat");
+                 CipherInputStream cis = new CipherInputStream(fis, cipher);
+                 ObjectInputStream ois = new ObjectInputStream(cis)) {
+
+                journal = (List<JournalEntry>) ois.readObject();
+            }
+
             // Reproduzir o journal
+            isReplaying = true;
             for (JournalEntry entry : journal) {
                 executarOperacao(entry.getOperacao(), entry.getCaminhoAlvo(), entry.getNovoNome(), false);
             }
-            // Finalizar modo de reprodução
             isReplaying = false;
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.out.println("Nenhum journal anterior encontrado. Iniciando novo.");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
