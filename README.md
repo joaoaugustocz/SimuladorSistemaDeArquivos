@@ -244,9 +244,6 @@ A estrutura modular do código, com classes separadas para arquivos, diretórios
 Este projeto serve como uma ferramenta educacional para aprofundar o entendimento sobre sistemas de arquivos e mecanismos de proteção de dados em sistemas operacionais.
 ```
 
-**Segunda parte do README:**
-
-```markdown
 # Tutorial de Utilização do Sistema de Arquivos
 
 Este tutorial fornece instruções detalhadas sobre como utilizar o simulador de sistema de arquivos. São apresentadas todas as operações disponíveis, acompanhadas de explicações e exemplos práticos para facilitar o entendimento do funcionamento do sistema.
@@ -559,6 +556,3 @@ O simulador utiliza um mecanismo de journaling para salvar o estado do sistema d
 ## Conclusão
 
 Este tutorial detalha o uso do simulador, cobrindo todos os comandos e fornecendo exemplos práticos. Agora você está preparado para explorar e compreender melhor o funcionamento de sistemas de arquivos e o impacto do journaling na integridade dos dados.
-
-Boa exploração e bom aprendizado!
-```
