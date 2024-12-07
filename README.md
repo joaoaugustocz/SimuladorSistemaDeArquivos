@@ -245,8 +245,6 @@ Este projeto serve como uma ferramenta educacional para aprofundar o entendiment
 
 # Tutorial de Utilização do Sistema de Arquivos
 
-Este tutorial fornece instruções detalhadas sobre como utilizar o simulador de sistema de arquivos. São apresentadas todas as operações disponíveis, acompanhadas de explicações e exemplos práticos para facilitar o entendimento do funcionamento do sistema.
-
 ## Comandos Disponíveis
 
 1. **criarArquivo \<caminho\>**
