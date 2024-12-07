@@ -310,6 +310,48 @@ Este projeto serve como uma ferramenta educacional para aprofundar o entendiment
      sair
      ```
 
+
+9. **cd \<caminho\>**
+   - **Descrição:** Muda o diretório atual para o especificado.
+   - **Detalhes:**
+     - É possível usar caminhos absolutos (a partir de `/`) ou relativos.
+     - O diretório `..` refere-se ao diretório pai, enquanto `.` refere-se ao diretório atual.
+   - **Exemplos:**
+     1. Mudar para o diretório `/projetos`:
+        ```
+        cd /projetos
+        ```
+        Após este comando, o prompt será atualizado para:
+        ```
+        /projetos >
+        ```
+
+     2. Subir um nível no diretório atual (ir para o diretório pai):
+        ```
+        cd ..
+        ```
+        Se o diretório atual for `/projetos/codigo`, após este comando o prompt será:
+        ```
+        /projetos >
+        ```
+
+     3. Permanecer no mesmo diretório:
+        ```
+        cd .
+        ```
+        O diretório atual não muda, e o prompt permanece o mesmo.
+
+     4. Usar um caminho relativo para mudar para o subdiretório `codigo` dentro do diretório atual:
+        ```
+        cd codigo
+        ```
+        Se o diretório atual for `/projetos`, o prompt será atualizado para:
+        ```
+        /projetos/codigo >
+        ```
+
+   - **Observação:** O comando `cd` verifica se o diretório existe antes de mudar. Caso o diretório não seja encontrado, uma mensagem de erro será exibida.
+
 ## Exemplos Práticos
 
 ### 1. Criando Estruturas de Diretórios e Arquivos
