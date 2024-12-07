@@ -1,8 +1,11 @@
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DirectoryEntry {
+public class DirectoryEntry implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String nome;
+    private DirectoryEntry pai;
     private Map<String, FileEntry> arquivos;
     private Map<String, DirectoryEntry> subDiretorios;
 
@@ -10,11 +13,31 @@ public class DirectoryEntry {
         this.nome = nome;
         this.arquivos = new HashMap<>();
         this.subDiretorios = new HashMap<>();
+        this.pai = null;
     }
 
-    // Métodos para adicionar, remover e obter arquivos e subdiretórios
-    public String getNome() { return nome; }
-    public void setNome(String nome) { this.nome = nome; }
+    public DirectoryEntry(String nome, DirectoryEntry pai) {
+        this.nome = nome;
+        this.arquivos = new HashMap<>();
+        this.subDiretorios = new HashMap<>();
+        this.pai = pai;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public DirectoryEntry getPai() {
+        return pai;
+    }
+
+    public void setPai(DirectoryEntry pai) {
+        this.pai = pai;
+    }
 
     public void adicionarArquivo(FileEntry arquivo) {
         arquivos.put(arquivo.getNome(), arquivo);
@@ -29,6 +52,7 @@ public class DirectoryEntry {
     }
 
     public void adicionarDiretorio(DirectoryEntry dir) {
+        dir.setPai(this);
         subDiretorios.put(dir.getNome(), dir);
     }
 

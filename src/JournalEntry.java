@@ -1,11 +1,10 @@
 import java.io.Serializable;
 
 public class JournalEntry implements Serializable {
-    private static final long serialVersionUID = 1L; // ID de versão da classe
-
+    private static final long serialVersionUID = 1L;
     private String operacao;
     private String caminhoAlvo;
-    private String novoNome; // Para operações de renomear
+    private String novoNome;
 
     public JournalEntry(String operacao, String caminhoAlvo) {
         this.operacao = operacao;
@@ -18,8 +17,15 @@ public class JournalEntry implements Serializable {
         this.novoNome = novoNome;
     }
 
-    // Métodos getters
-    public String getOperacao() { return operacao; }
-    public String getCaminhoAlvo() { return caminhoAlvo; }
-    public String getNovoNome() { return novoNome; }
+    public String getOperacao() {
+        return operacao;
+    }
+
+    public String getCaminhoAlvo() {
+        return caminhoAlvo;
+    }
+
+    public String getNovoNome() {
+        return novoNome;
+    }
 }

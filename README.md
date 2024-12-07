@@ -211,9 +211,6 @@ public void salvarJournal() {
 }
 ```
 
-- Salva o journal em um arquivo criptografado.
-- Torna o arquivo oculto no sistema operacional.
-
 2. **Carregar Journal**
 
 ```java
@@ -234,8 +231,11 @@ O simulador de sistema de arquivos com journaling implementado em Java fornece u
 A estrutura modular do código, com classes separadas para arquivos, diretórios e gerenciamento do sistema de arquivos, facilita a manutenção e a expansão do simulador. A implementação do journaling demonstra como operações podem ser registradas e reproduzidas para recuperar o estado após falhas.
 
 Este projeto serve como uma ferramenta educacional para aprofundar o entendimento sobre sistemas de arquivos e mecanismos de proteção de dados em sistemas operacionais.
+```
 
+**Segunda parte do README:**
 
+```markdown
 # Tutorial de Utilização do Sistema de Arquivos
 
 Este tutorial fornece instruções detalhadas sobre como utilizar o simulador de sistema de arquivos. São apresentadas todas as operações disponíveis, acompanhadas de explicações e exemplos práticos para facilitar o entendimento do funcionamento do sistema.
@@ -505,7 +505,7 @@ Este tutorial fornece instruções detalhadas sobre como utilizar o simulador de
 
 ### 5. Salvando e Carregando o Estado do Sistema de Arquivos
 
-O simulador utiliza um mecanismo de journaling para salvar o estado do sistema de arquivos. Ao encerrar o simulador com o comando `sair`, o estado atual é salvo, e ao iniciar o simulador novamente, o estado é restaurado.
+O simulador utiliza um mecanismo de journaling para salvar o estado do sistema de arquivos. Ao encerrar o simulador com o comando `sair`, o estado atual é salvo, e ao iniciar o simulador novamente, o estado é restaurado automaticamente.
 
 **Passos:**
 
@@ -517,60 +517,37 @@ O simulador utiliza um mecanismo de journaling para salvar o estado do sistema d
 
 2. **Iniciar o simulador novamente. O estado anterior será restaurado automaticamente.**
 
-   **Observação:** Não serão exibidas mensagens das operações passadas, apenas o prompt de comando estará disponível.
-
-3. **Verificar que o estado foi restaurado listando um diretório:**
+3. **Verificar o estado restaurado:**
 
    ```
    listarDiretorio /usuarios/joao/documentos
    ```
 
-   **Saída esperada (mesma do passo anterior):**
-
-   ```
-   Listando diretório: /usuarios/joao/documentos
-   Arquivo: curriculo.docx
-   Diretório: imagens
-   ```
+   **Saída esperada:** Mesmo conteúdo de antes do encerramento.
 
 ## Observações Importantes
 
 - **Caminhos Absolutos:** Todos os comandos utilizam caminhos absolutos a partir da raiz (`/`).
-
-- **Nomes de Arquivos e Diretórios:** Evite utilizar caracteres especiais ou espaços nos nomes para prevenir possíveis erros.
-
-- **Sensível a Maiúsculas e Minúsculas:** O simulador diferencia letras maiúsculas de minúsculas nos nomes de arquivos e diretórios.
-
-- **Integridade dos Dados:** Graças ao mecanismo de journaling, o sistema é capaz de recuperar o estado consistente em caso de falhas.
+- **Nomes de Arquivos e Diretórios:** Evite caracteres especiais ou espaços.
+- **Sensível a Maiúsculas e Minúsculas:** O simulador diferencia maiúsculas de minúsculas.
+- **Integridade dos Dados:** O journaling garante recuperação em caso de falhas.
 
 ## Dicas de Uso
 
-- **Planejamento da Estrutura:** Antes de começar, planeje a estrutura de diretórios e arquivos que deseja criar para facilitar a organização.
-
-- **Verificação Frequente:** Utilize o comando `listarDiretorio` para verificar o conteúdo dos diretórios e acompanhar as alterações.
-
-- **Renomeações Cuidadosas:** Ao renomear arquivos ou diretórios, certifique-se de usar o caminho correto e o novo nome desejado para evitar confusões.
-
-- **Encerramento Seguro:** Sempre encerre o simulador utilizando o comando `sair` para garantir que o estado do sistema de arquivos seja salvo corretamente.
+- **Planejamento da Estrutura:** Planeje diretórios e arquivos antes de começar.
+- **Verificação Frequente:** Use `listarDiretorio` para monitorar o estado do sistema.
+- **Renomeações Cuidadosas:** Tenha atenção ao renomear.
+- **Encerramento Seguro:** Sempre use `sair` para garantir que o estado seja salvo.
 
 ## Tratamento de Erros Comuns
 
-- **Diretório ou Arquivo Não Encontrado:**
-
-  Se ao executar um comando você receber uma mensagem informando que o diretório ou arquivo não foi encontrado, verifique se o caminho está correto e se o nome está digitado exatamente como foi criado (respeitando maiúsculas e minúsculas).
-
-- **Operação Inválida:**
-
-  Se você inserir um comando que não está listado nas operações disponíveis, o simulador informará que a operação é inválida. Consulte a seção de comandos disponíveis para verificar a sintaxe correta.
-
-- **Tentativa de Criar Arquivo em Diretório Inexistente:**
-
-  Ao criar um arquivo, o diretório pai deve existir. Certifique-se de criar todos os diretórios necessários antes de criar arquivos dentro deles.
+- **Diretório/Arquivo Não Encontrado:** Verifique o caminho e o nome exato.
+- **Operação Inválida:** Confira a lista de comandos com `help`.
+- **Criar Arquivo em Diretório Inexistente:** Crie primeiro todos os diretórios necessários.
 
 ## Conclusão
 
-Este tutorial apresentou uma visão detalhada de como utilizar o simulador de sistema de arquivos, cobrindo todas as operações disponíveis e fornecendo exemplos práticos. Com essas instruções, você está preparado para explorar e testar o simulador, compreendendo melhor como os sistemas de arquivos funcionam e como o journaling contribui para a integridade dos dados.
+Este tutorial detalha o uso do simulador, cobrindo todos os comandos e fornecendo exemplos práticos. Agora você está preparado para explorar e compreender melhor o funcionamento de sistemas de arquivos e o impacto do journaling na integridade dos dados.
 
-Explore diferentes cenários, crie estruturas complexas de diretórios e arquivos, e observe como o sistema mantém o estado consistente mesmo após encerramentos e reinicializações.
-
-Bom aprendizado e bom uso do simulador!
+Boa exploração e bom aprendizado!
+```
