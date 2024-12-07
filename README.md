@@ -1,6 +1,6 @@
 ### Alunos:
 ### João Augusto Carvalho Araújo - 2214590
-## João Pedro Monteiro
+### João Pedro Monteiro
 
 Este projeto implementa um simulador de sistema de arquivos em Java com suporte a journaling. O objetivo é compreender a organização e o gerenciamento de arquivos, diretórios e o uso do journaling para manter a integridade do sistema após falhas. Além disso, o estado completo do sistema (incluindo o journal) é criptografado e armazenado em um único arquivo (filesystem.dat), que é ocultado no sistema operacional Windows.
 
