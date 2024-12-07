@@ -2,16 +2,16 @@
 ### João Augusto Carvalho Araújo - 2214590
 ## João Pedro Monteiro
 
+Este projeto implementa um simulador de sistema de arquivos em Java com suporte a journaling. O objetivo é compreender a organização e o gerenciamento de arquivos, diretórios e o uso do journaling para manter a integridade do sistema após falhas. Além disso, o estado completo do sistema (incluindo o journal) é criptografado e armazenado em um único arquivo (filesystem.dat), que é ocultado no sistema operacional Windows.
+
+
+# Metodologia
+
 O simulador é desenvolvido em Java. Ele executa comandos de criação, remoção, renomeação e listagem de arquivos e diretórios, bem como comandos auxiliares de navegação e ajuda. Cada operação é registrada em um journal interno (.journal.dat), que faz parte do próprio sistema de arquivos simulado.
 
 Ao finalizar o simulador com o comando sair, o estado completo do sistema (incluindo a raiz, diretórios, arquivos e o .journal.dat) é serializado, criptografado e gravado em um arquivo chamado filesystem.dat. Esse arquivo é então marcado como oculto no Windows.
 
 Ao iniciar o simulador novamente, o filesystem.dat é carregado, descriptografado, restaurando o estado exato do sistema de arquivos e o journal. Assim, a estrutura e o histórico de operações permanecem consistentes entre execuções.
-
-
-# Metodologia
-
-O simulador foi desenvolvido em linguagem de programação Java. Ele recebe chamadas de métodos com os devidos parâmetros e implementa os métodos correspondentes aos comandos de um sistema operacional. O programa executa cada funcionalidade e exibe o resultado na tela quando necessário.
 
 # Parte 1: Introdução ao Sistema de Arquivos com Journaling
 
