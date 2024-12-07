@@ -1,3 +1,14 @@
+### Alunos:
+### João Augusto Carvalho Araújo - 2214590
+## João Pedro Monteiro
+
+O simulador é desenvolvido em Java. Ele executa comandos de criação, remoção, renomeação e listagem de arquivos e diretórios, bem como comandos auxiliares de navegação e ajuda. Cada operação é registrada em um journal interno (.journal.dat), que faz parte do próprio sistema de arquivos simulado.
+
+Ao finalizar o simulador com o comando sair, o estado completo do sistema (incluindo a raiz, diretórios, arquivos e o .journal.dat) é serializado, criptografado e gravado em um arquivo chamado filesystem.dat. Esse arquivo é então marcado como oculto no Windows.
+
+Ao iniciar o simulador novamente, o filesystem.dat é carregado, descriptografado, restaurando o estado exato do sistema de arquivos e o journal. Assim, a estrutura e o histórico de operações permanecem consistentes entre execuções.
+
+
 # Metodologia
 
 O simulador foi desenvolvido em linguagem de programação Java. Ele recebe chamadas de métodos com os devidos parâmetros e implementa os métodos correspondentes aos comandos de um sistema operacional. O programa executa cada funcionalidade e exibe o resultado na tela quando necessário.
