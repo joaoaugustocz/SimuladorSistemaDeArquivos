@@ -242,7 +242,6 @@ O simulador de sistema de arquivos com journaling implementado em Java fornece u
 A estrutura modular do código, com classes separadas para arquivos, diretórios e gerenciamento do sistema de arquivos, facilita a manutenção e a expansão do simulador. A implementação do journaling demonstra como operações podem ser registradas e reproduzidas para recuperar o estado após falhas.
 
 Este projeto serve como uma ferramenta educacional para aprofundar o entendimento sobre sistemas de arquivos e mecanismos de proteção de dados em sistemas operacionais.
-```
 
 # Tutorial de Utilização do Sistema de Arquivos
 
